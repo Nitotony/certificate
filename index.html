@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MarkSheet</title>
    <style>
-    * {
+   * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -17,7 +17,6 @@ body {
   text-align: center;
   align-items: center;
   justify-content: center;
-  
 }
 
 .container {
@@ -32,24 +31,28 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 16px; 
   width: 100%;
 }
-.logo {
-  width: 30rem;
-}
-.hicet-logo {
 
+.logo {
+  width: 480px; 
+}
+
+.hicet-logo {
   align-content: center;
   position: relative;
 }
+
 .qr {
-  width: 4rem;
-  height: 4rem;
+  width: 64px; 
+  height: 64px;
 }
+
 .special {
   color: #7c140c;
 }
@@ -59,7 +62,7 @@ body {
 }
 
 .clg-title {
-  font-size: 1.3rem;
+  font-size: 20.8px; 
   font-weight: bolder;
   color: #010081;
 }
@@ -67,64 +70,42 @@ body {
 .add {
   color: #fe6c0b;
 }
+
 .title {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
+
 .mark-title {
   font-weight: bolder;
-  margin-bottom: 2rem;
-  font-size: 30px;
+  margin-bottom: 32px; 
+    font-size: 30px;
 }
 
 .candidate-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-template-rows: auto;
-  padding: 2rem;
+  padding: 32px; 
 }
 
-.candidate-name {
-  grid-column: auto / span 2;
-  text-align: center;
-  border: 2px solid black;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-weight: bold;
-}
-
-.Course {
-  grid-column: auto / span 2;
-  text-align: center;
-  border: 2px solid black;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-weight: bold;
-}
-
+.candidate-name,
+.Course,
 .authorise {
   grid-column: auto / span 2;
   text-align: center;
   border: 2px solid black;
-  padding: 1rem;
+  padding: 16px; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
   font-weight: bold;
 }
+
 .reg-no,
 .enrol {
   border: 2px solid black;
-  padding: 1rem;
+  padding: 16px; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -140,21 +121,21 @@ body {
 
 .mark {
   text-align: center;
-  padding: 0 2rem 2rem 2rem;
+  padding: 0 32px 32px 32px; 
 }
-
-
 
 .table {
   width: 60vw;
 }
+
 table {
   border-collapse: collapse;
   width: 100%;
 }
+
 td,
 th {
-  padding: 1rem;
+  padding: 16px; 
   border: 2px solid black;
   border-collapse: collapse;
 }
@@ -164,25 +145,27 @@ th {
   font-weight: bolder;
   color: #7c140c;
 }
+
 input {
-  width: 4rem;
-  height: 2rem;
-  padding: 0.5rem 0 0.5rem 0.5rem;
+  width: 64px; 
+  height: 32px;
+  padding: 8px 0 8px 8px; 
   font-size: 15px;
 }
 
 .total-total {
   text-align: end;
 }
-#totals{
-  text-align: start;
 
+#totals {
+  text-align: start;
 }
+
 .bottom {
   width: 100%;
-  height: 2rem;
+  height: 32px; 
   display: flex;
-  padding: 2rem;
+  padding: 32px; 
   justify-content: space-between;
 }
    </style>
@@ -370,113 +353,8 @@ input {
         <div class="sign">Signature</div>
       </div>
     </div>
-    <script>
-const inputElements = document.querySelectorAll("input");
-const total_total = document.querySelector(".total-total");
+    <script src="./script.js">
 
-const theoryElements = [
-  document.querySelector(".theory1"),
-  document.querySelector(".theory2"),
-  document.querySelector(".theory3"),
-  document.querySelector(".theory4"),
-  document.querySelector(".theory5"),
-];
-
-const practicalElements = [
-  document.querySelector(".practical1"),
-  document.querySelector(".practical2"),
-  document.querySelector(".practical3"),
-  document.querySelector(".practical4"),
-  document.querySelector(".practical5"),
-];
-
-const totalElements = [
-  document.querySelector(".total1"),
-  document.querySelector(".total2"),
-  document.querySelector(".total3"),
-  document.querySelector(".total4"),
-  document.querySelector(".total5"),
-];
-
-
-
-function calculateTotal() {
-  let totalVal = 0;
-  totalElements.forEach((totalElement) => {
-    totalVal += parseInt(totalElement.innerHTML) || 0;
-  });
-  total_total.innerHTML = totalVal;
-  updateResult(totalVal);
-}
-
-
-
-
-
-
-
-function handleInput(index) {
-  return function (e) {
-    const value = e.target.value;
-     totalElements[index].innerHTML = Number(value) + Number(practicalElements[index].value);
-    calculateTotal();
-  };
-}
-
-function handlePracticalInput(index) {
-  return function (e) {
-     const value = e.target.value;
-     totalElements[index].innerHTML = Number(value) + Number(theoryElements[index].value);
-    calculateTotal();
-  };
-}
-
-
-
-
-
-
-
-theoryElements.forEach((theoryElement, index) => {
-     theoryElement.addEventListener("input", handleInput(index));
-}
-);
-
-
-
-
-practicalElements.forEach((practicalElement, index) => 
-{
-  practicalElement.addEventListener("input", handlePracticalInput(index));
-}
-);
-
-
-
-
-function updateResult(total) {
-  const result = document.querySelector(".result");
-  const percentage = document.querySelector(".percentage");
-  const grade = document.querySelector(".grade");
-
-  result.innerHTML = total < 290 ? "Fail" : "Pass";
-
-  let per = total / 5;
-  percentage.innerHTML = per + "%";
-
-  if (per >= 90) {
-    grade.innerHTML = "A+";
-  } else if (per >= 80) {
-    grade.innerHTML = "A";
-  } else if (per >= 70) {
-    grade.innerHTML = "B";
-  } else if (per >= 60) {
-    grade.innerHTML = "C";
-  }
-  else{
-    grade.innerHTML = "F";
-  }
-}
 
     </script>
   </body>
