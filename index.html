@@ -418,15 +418,15 @@ function calculateTotal() {
 function handleInput(index) {
   return function (e) {
     const value = e.target.value;
-    totalElements[index].innerHTML = Number(value) + Number(practicalElements[index].value);
+     totalElements[index].innerHTML = Number(value) + Number(practicalElements[index].value);
     calculateTotal();
   };
 }
 
 function handlePracticalInput(index) {
   return function (e) {
-    const value = e.target.value;
-    totalElements[index].innerHTML = Number(value) + Number(theoryElements[index].value);
+     const value = e.target.value;
+     totalElements[index].innerHTML = Number(value) + Number(theoryElements[index].value);
     calculateTotal();
   };
 }
@@ -438,15 +438,18 @@ function handlePracticalInput(index) {
 
 
 theoryElements.forEach((theoryElement, index) => {
-  theoryElement.addEventListener("input", handleInput(index));
-});
+     theoryElement.addEventListener("input", handleInput(index));
+}
+);
 
 
 
 
-practicalElements.forEach((practicalElement, index) => {
+practicalElements.forEach((practicalElement, index) => 
+{
   practicalElement.addEventListener("input", handlePracticalInput(index));
-});
+}
+);
 
 
 
